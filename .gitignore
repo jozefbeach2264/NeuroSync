@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+.env
+neural_cache.json
