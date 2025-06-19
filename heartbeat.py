@@ -70,9 +70,10 @@ class HeartbeatSystem:
                 # (Optional) You could log this to a file if desired
                 # print(f"Self-check: Memory usage is {self_status['memory_percent']}%")
 
-                # 2. Check external services
-                await self._check_subsystem_health("TELEGRAM_BOT", self.config.bot_health_url, client)
-                await self._check_subsystem_health("TRADING_CORE", self.config.core_health_url, client)
+                # 2. Check external services (temporarily disabled to prevent recovery mode)
+                # await self._check_subsystem_health("TELEGRAM_BOT", self.config.bot_health_url, client)
+                # await self._check_subsystem_health("TRADING_CORE", self.config.core_health_url, client)
+                print("INFO: External health checks temporarily disabled")
                 
                 # 3. Wait for the next cycle
                 await asyncio.sleep(interval)
