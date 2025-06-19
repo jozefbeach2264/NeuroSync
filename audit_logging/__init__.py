@@ -1,3 +1,0 @@
-"""
-NeuroSync Audit Logging Components
-"""

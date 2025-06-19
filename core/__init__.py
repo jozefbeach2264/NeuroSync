@@ -1,3 +1,0 @@
-"""
-NeuroSync Core Components
-"""

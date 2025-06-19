@@ -8,5 +8,17 @@ externalPort = 80
 [[ports]]
 localPort = 8000
 externalPort = 8000
+exposeLocalhost = true
 
 [nix]
+
+[workflows]
+
+[[workflows.workflow]]
+name = "GET MONEY"
+mode = "sequential"
+author = 42692233
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "uvicorn main:app --reload"
