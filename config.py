@@ -1,34 +1,25 @@
-# config.py
+# NeuroSync/config.py (Corrected and Complete)
 import os
-    
 from dotenv import load_dotenv
 
-        # Load environment variables from a .env file
+# This line loads the secrets from the .env file or Replit's Secrets tool
 load_dotenv()
 
 class Config:
-            """
-            Manages all configuration for the NeuroSync application.
-            """
-            def __init__(self):
-                # --- General Settings ---
-                self.app_name = "NeuroSync"
+    """Manages all configuration settings for the NeuroSync service."""
+    def __init__(self):
+        # URL for the TradingCore's health check endpoint
+        self.core_health_url = os.getenv("CORE_HEALTH_URL")
+        
+        # URL for the Telegram Bot's health check endpoint
+        self.bot_health_url = os.getenv("BOT_HEALTH_URL")
+        
+        # Interval in seconds for the heartbeat check
+        self.heartbeat_interval_seconds = 15
 
-                # --- Heartbeat Settings ---
-                self.heartbeat_interval_seconds: int = 15
-                self.bot_health_url: str = os.getenv("BOT_HEALTH_URL", "http://127.0.0.1:8001/health")
-                self.core_health_url: str = os.getenv("CORE_HEALTH_URL", "http://127.0.0.1:8002/health")
+        # A debug print to confirm the secrets are loaded
+        print("--- NeuroSync Config Initialized ---")
+        print(f"Loaded CORE_HEALTH_URL: {self.core_health_url}")
+        print(f"Loaded BOT_HEALTH_URL: {self.bot_health_url}")
+        print("------------------------------------")
 
-                # --- Logging Settings ---
-                self.LOG_DIR = "logs"
-                self.audit_log_file = os.path.join(self.LOG_DIR, "audit.json")
-                self.sync_log_file = os.path.join(self.LOG_DIR, "sync_status.log")
-
-                # --- ADDED: Log Rotation Settings ---
-                # Get rotation size from environment variable, default to 10MB
-                self.LOG_ROTATION_SIZE = int(os.getenv('LOG_ROTATION_SIZE', '10485760'))
-                # Get number of backup log files to keep, default to 5
-                self.LOG_ROTATION_COUNT = int(os.getenv('LOG_ROTATION_COUNT', '5'))
-
-                # Ensure log directory exists
-                os.makedirs(self.LOG_DIR, exist_ok=True)

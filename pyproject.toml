@@ -1,9 +1,19 @@
-[project]
-name = "repl-nix-workspace"
+[tool.poetry]
+name = "neurosync"
 version = "0.1.0"
-description = "Add your description here"
-requires-python = ">=3.11"
-dependencies = [
-    "psutil>=7.0.0",
-    "python-telegram-bot>=22.1",
-]
+description = "Central hub for trading system communication."
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.104.1"
+uvicorn = {extras = ["standard"], version = "^0.24.0.post1"}
+httpx = "^0.25.2"
+websockets = "^12.0"
+python-dotenv = "^1.0.0"
+requests = "^2.32.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -86,7 +86,7 @@ class AuditLogger:
         
         # Audit state
         self.running = False
-        self.log_dir = Path(config.LOG_DIR)
+        self.log_dir = Path(config.log_dir)
         self.audit_log_file = self.log_dir / 'audit.log'
         self.json_log_file = self.log_dir / 'audit.json'
         
@@ -124,8 +124,8 @@ class AuditLogger:
         # Rotating file handler for text logs
         text_handler = RotatingFileHandler(
             self.audit_log_file,
-            maxBytes=self.config.LOG_ROTATION_SIZE,
-            backupCount=self.config.LOG_ROTATION_COUNT
+            maxBytes=self.config.log_rotation_size,
+            backupCount=self.config.log_rotation_count
         )
         
         # Custom formatter for audit logs
@@ -143,8 +143,8 @@ class AuditLogger:
         # Rotating file handler for JSON logs
         json_handler = RotatingFileHandler(
             self.json_log_file,
-            maxBytes=self.config.LOG_ROTATION_SIZE,
-            backupCount=self.config.LOG_ROTATION_COUNT
+            maxBytes=self.config.log_rotation_size,
+            backupCount=self.config.log_rotation_count
         )
         
         # JSON formatter
