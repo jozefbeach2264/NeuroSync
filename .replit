@@ -7,3 +7,15 @@ modules = ["nodejs-20", "python-3.11"]
 [[ports]]
 localPort = 8000
 externalPort = 80
+
+[workflows]
+runButton = "GET MONEY"
+
+[[workflows.workflow]]
+name = "GET MONEY"
+mode = "sequential"
+author = 44035426
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
